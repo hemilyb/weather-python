@@ -9,9 +9,9 @@ def weather_info(data, index):
    temp = kelvin_to_celsius(data['list'][index]['main']['temp'])
 
    timestamp = data['list'][index]['dt']
-   date_time = datetime.fromtimestamp(timestamp, tz=timezone.utc).strftime('%d-%m')
+   date = datetime.fromtimestamp(timestamp).strftime('%d/%m')
 
-   return temp, date_time
+   return temp, date
 
 def weather(city):
    response = verify_temperature(city)
@@ -21,9 +21,9 @@ def weather(city):
    dates_list = []
 
    for index in range(0, 33, 8): # (start, stop, step)
-      temp, date_time = weather_info(data, index)
+      temp, date = weather_info(data, index)
       temps_list.append(temp)
-      dates_list.append(date_time)
+      dates_list.append(date)
       
    temps = [int(temp) for temp in temps_list]
    dates = dates_list
