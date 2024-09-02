@@ -1,5 +1,5 @@
 from api import verify_temperature
-from datetime import datetime, timezone
+from datetime import datetime
 
 def kelvin_to_celsius(temp_kelvin):
    temp_celsius = temp_kelvin - 273.15
